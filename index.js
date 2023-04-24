@@ -9,17 +9,24 @@ function generateGrid() {
     lockGame = false;
     grid.innerHTML = "";
     for (var i = 0; i < 10; i++) {
-        row = grid.insertRow(i);
-        for (var j = 0; j < 10; j++) {
-            cell = row.insertCell(j);
-            cell.onclick = function () { init(this); };
-            var mine = document.createAttribute("mine");
-            mine.value = "false";
-            cell.setAttributeNode(mine);
-        }
+      row = grid.insertRow(i);
+      for (var j = 0; j < 10; j++) {
+        cell = row.insertCell(j);
+        cell.onclick = function() {
+          init(this);
+        };
+        var mine = document.createAttribute("mine");
+        mine.value = "false";
+        cell.setAttributeNode(mine);
+        cell.innerHTML = "";
+      }
     }
+    document.querySelector("button").setAttribute("onclick", "generateGrid()");
     generateMines();
-}
+  }
+  
+
+
 
 // Generate mines randomly
 function generateMines() {
